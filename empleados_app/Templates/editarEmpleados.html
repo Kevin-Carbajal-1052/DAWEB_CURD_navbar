@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block cuerpo %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h2>Editar Empleados</h2>
+        <div class="card">
+            <div class="card-body">
+              <form action="/editarEmpleado/" method="POST">{% csrf_token %}
+              <div class="form-group">
+                <label for="idEmpleados">ID Empleados:</label>
+                <input type="text" id="idEmpleados" name="idEmpleados" class="form-control" value="{{misEmpleados.idEmpleados}}"minlenght="1" maxlenght="9" readonly required>
+              </div>
+                <div class="form-group py-3">
+                  <label for="Nombre">Nombre:</label>
+                  <input type="text" id="Nombre" name="Nombre" class="form-control" value="{{misEmpleados.Nombre}}"minlenght="1" maxlenght="9" required>
+                </div>
+                <div class="form-group">
+                  <label for="Telefono">Telefono:</label>
+                  <input type="text" id="Telefono" name="Telefono" class="form-control" value="{{misEmpleados.Telefono}}"minlenght="1" maxlenght="9" required>
+                </div>
+                <div class="form-group">
+                  <label for="Direccion">Direccion:</label>
+                  <input type="text" id="Direccion" name="Direccion" class="form-control" value="{{misEmpleados.Direccion}}"minlenght="1" maxlenght="9" required>
+                </div>
+                <div class="form-group">
+                    <label for="Correo">Correo:</label>
+                    <input type="email" id="Correo" name="Correo" class="form-control" value="{{misEmpleados.Correo}}"minlenght="1" maxlenght="9" required>
+                </div>
+                <div class="form-group">
+                    <label for="Turno">Turno:</label>
+                    <input type="text" id="Turno" name="Turno" class="form-control" value="{{misEmpleados.Turno}}"minlenght="1" maxlenght="9" required>
+                </div>
+                <div class="form-group">
+                  <label for="Sueldo">Sueldo:</label>
+                  <input type="number" id="Sueldo" name="Sueldo" class="form-control" value="{{misEmpleados.Sueldo}}"minlenght="1" maxlenght="9" required>
+                </div>
+                <div class="form-group">
+                  <label for="Puesto">Puesto:</label>
+                  <input type="text" id="Puesto" name="Puesto" class="form-control" value="{{misEmpleados.Puesto}}"minlenght="1" maxlenght="9" required>
+                </div>
+                <div class="form-group py-3">
+                  <button type="submit" class="btn btn-dark">Guardar empleado</button>
+                </div>
+              </form>
+            </div>
+          </div>
+    </div>
+</div>
+{% endblock %}
