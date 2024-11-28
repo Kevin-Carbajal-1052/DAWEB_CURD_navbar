@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block cuerpo %}
+{% load static %}
+    <div class="row">
+        <div class="col-sm-12 col-md-4 col-lg-4 xl-4">
+            <h1>Ingresar orden</h1>
+            <div class="card">
+              <div class="card-body">
+                <form action="/registrarOrdenes/" method="POST">{% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="txtidOrdenes" name="txtidOrdenes" class="form-control" placeholder="txtidOrdenes" minlenght="1" maxlenght="6" required>
+                      </div>
+                        <div class="form-group py-3">
+                          <input type="text" id="txtidClientes" name="txtidClientes" class="form-control" placeholder="txtidClientes"  maxlenght="100" required>
+                        </div>
+                        <div class="form-group">
+                          <input type="date" id="FechaOrden" name="FechaOrden" class="form-control" placeholder="FechaOrden" minlenght="1" maxlenght="9" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="Cantidad" name="Cantidad" class="form-control" placeholder="Cantidad" minlenght="1" maxlenght="9" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="date" id="FechaEnvio" name="FechaEnvio" class="form-control" placeholder="FechaEnvio" minlenght="1" maxlenght="9"  required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="DireccionEnvio" name="DireccionEnvio" class="form-control"  placeholder="DireccionEnvio" minlenght="1" maxlenght="9"  required>
+                        </div>
+                        <div class="form-group">
+                          <input type="text" id="idEmpleado" name="idEmpleado" class="form-control" placeholder="idEmpleado" minlenght="1" maxlenght="9" required>
+                        </div>
+                        <div class="form-group">
+                          <input type="text" id="idProducto" name="idProducto" class="form-control" placeholder="idProducto" minlenght="1" maxlenght="9" required>
+                        </div>
+                  <div class="form-group py-3">
+                    <button type="submit" class="btn btn-info">Guardar orden</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+        </div>
+
+    <div class="col-sm-12 col-md-8 col-lg-8 xl-8">
+        <h1>Listado de ordenes</h1>
+        <img class="w-50" src="{% static "img/ordenes-de-compra.png" %}" alt="ñ" width="400" height="400"><br>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">idOrdenes</th>
+                <th scope="col">idClientes</th>
+                <th scope="col">FechaOrden</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">FechaEnvio</th>
+                <th scope="col">DireccionEnvio</th>
+                <th scope="col">idEmpleado</th>
+                <th scope="col">idProducto</th>
+                <th>Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for m in misordenes %}
+              <tr>
+                <td>{{m.idOrdenes}}</td>
+                <td>{{m.idClientes}}</td>
+                <td>{{m.FechaOrden | date:'d-m-v'}}</td>
+                <td>{{m.Cantidad}}</td>
+                <td>{{m.FechaEnvio | date:'d-m-v'}}</td>
+                <td>{{m.DireccionEnvio}}</td>
+                <td>{{m.idEmpleado}}</td>
+                <td>{{m.idProducto}}</td>
+                <td><a href="seleccionarOrdenes/{{m.idOrdenes}}" class="btn btn-info">Editar</a></td>
+                <td><a href="borrarOrden/{{m.idOrdenes}}" class="btn btn-info">Borrar</a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </div>
+    </div>
+{% endblock %}
