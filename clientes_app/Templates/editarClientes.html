@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block cuerpo %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h2>Editar Clientes</h2>
+        <div class="card">
+            <div class="card-body">
+              <form action="/editarCliente/" method="POST">{% csrf_token %}
+              <div class="form-group">
+                <label for="idClientes">ID Clientes:</label>
+                <input type="text" id="idClientes" name="idClientes" class="form-control" value="{{misclientes.idClientes}}" minlenght="1" maxlenght="6" readonly required>
+              </div>
+                <div class="form-group py-3">
+                  <label for="Nombre">Nombre:</label>
+                  <input type="text" id="Nombre" name="Nombre" class="form-control" value="{{misclientes.Nombre}}" maxlenght="100" required>
+                </div>
+                <div class="form-group">
+                  <label for="Telefono">Telefono:</label>
+                  <input type="text" id="Telefono" name="Telefono" class="form-control" minlenght="1" maxlenght="9" value="{{misclientes.Telefono}}" required>
+                </div>
+                <div class="form-group">
+                  <label for="Direccion">Direccion:</label>
+                  <input type="text" id="Direccion" name="Direccion" class="form-control" minlenght="1" maxlenght="9" value="{{misclientes.Direccion}}" required>
+                </div>
+                <div class="form-group">
+                  <label for="Correo">Correo:</label>
+                    <input type="email" id="Correo" name="Correo" class="form-control" minlenght="1" maxlenght="9" value="{{misclientes.Correo}}" required>
+                </div>
+                <div class="form-group">
+                  <label for="FechaRegistro">Fecha de Registro:</label>
+                  <input type="date" id="FechaRegistro" name="FechaRegistro" class="form-control" minlenght="1" maxlenght="9" value="{{misclientes.FechaRegistro}}" required>
+                </div>
+                <div class="form-group py-3">
+                  <button type="submit" class="btn btn-dark">Guardar cliente</button>
+                </div>
+              </form>
+            </div>
+          </div>
+    </div>
+</div>
+{% endblock %}

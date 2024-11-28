@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block cuerpo %}
+{% load static %}
+    <div class="row">
+        <div class="col-sm-12 col-md-4 col-lg-4 xl-4">
+            <h1>Ingresar Categoria</h1>
+            <div class="card">
+              <div class="card-body">
+                <form action="/registrarCategorias/" method="POST">{% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="idCategoria" name="idCategoria" class="form-control" placeholder="idCategoria" minlenght="1" maxlenght="6" required>
+                      </div>
+                        <div class="form-group py-3">
+                          <input type="text" id="Nombre" name="Nombre" class="form-control" placeholder="Nombre"  maxlenght="100" required>
+                        </div>
+                        <div class="form-group">
+                          <input type="text" id="idProducto" name="idProducto" class="form-control" placeholder="idProducto" minlenght="1" maxlenght="9" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="Promociones" name="Promociones" class="form-control" placeholder="Promociones" minlenght="1" maxlenght="9" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="Tamaño" name="Tamaño" class="form-control" placeholder="Tamaño" minlenght="1" maxlenght="9"  required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="Color" name="Color" class="form-control"  placeholder="Color" minlenght="1" maxlenght="9"  required>
+                        </div>
+                        <div class="form-group">
+                          <input type="text" id="Genero" name="Genero" class="form-control" placeholder="Genero" minlenght="1" maxlenght="9" required>
+                        </div>
+                  <div class="form-group py-3">
+                    <button type="submit" class="btn btn-info">Guardar Categoria</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+        </div>
+
+    <div class="col-sm-12 col-md-8 col-lg-8 xl-8">
+        <h1>Listado de Categoria</h1>
+        <img class="w-50" src="{% static "img/categorias.png" %}" alt="ñ" width="400" height="400">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">idCategoria</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">idProducto</th>
+                <th scope="col">Promociones</th>
+                <th scope="col">Tamaño</th>
+                <th scope="col">Color</th>
+                <th scope="col">Genero</th>
+                <th>Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for m in miscategorias %}
+              <tr>
+                <td>{{m.idCategoria}}</td>
+                <td>{{m.Nombre}}</td>
+                <td>{{m.idProducto}}</td>
+                <td>{{m.Promociones}}</td>
+                <td>{{m.Tamaño}}</td>
+                <td>{{m.Color}}</td>
+                <td>{{m.Genero}}</td>
+                <td><a href="seleccionarCategorias/{{m.idCategoria}}" class="btn btn-info">Editar</a></td>
+                <td><a href="borrarCategoria/{{m.idCategoria}}" class="btn btn-info">Borrar</a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </div>
+    </div>
+{% endblock %}
