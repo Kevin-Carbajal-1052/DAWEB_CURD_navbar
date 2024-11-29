@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block cuerpo %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h2>Editar Categoria</h2>
+        <div class="card">
+            <div class="card-body">
+              <form action="/editarCategoria/" method="POST">{% csrf_token %}
+              <div class="form-group">
+                <label for="idCategoria">ID Categoria:</label>
+                <input type="text" id="idCategoria" name="idCategoria" class="form-control" value="{{miscategorias.idCategoria}}" minlenght="1" maxlenght="6" readonly required>
+              </div>
+                <div class="form-group py-3">
+                  <label for="Nombre">Nombre:</label>
+                  <input type="text" id="Nombre" name="Nombre" class="form-control" value="{{miscategorias.Nombre}}" maxlenght="100" required>
+                </div>
+                <div class="form-group">
+                  <label for="Promociones">Promociones:</label>
+                  <input type="text" id="Promociones" name="Promociones" class="form-control" value="{{miscategorias.Promociones}}" minlenght="1" maxlenght="9" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="Tamaño" name="Tamaño" class="form-control" value="{{miscategorias.Tamaño}}" minlenght="1" maxlenght="9" required>
+                </div>
+                <div class="form-group">
+                  <label for="Color">Color:</label>
+                    <input type="text" id="Color" name="Color" class="form-control" value="{{miscategorias.Color}}" minlenght="1" maxlenght="9" required>
+                </div>
+                <div class="form-group">
+                  <label for="Genero">Genero:</label>
+                  <input type="text" id="Genero" name="Genero" class="form-control" value="{{miscategorias.Genero}}" minlenght="1" maxlenght="9" required>
+                </div>
+                <div class="form-group py-3">
+                  <button type="submit" class="btn btn-dark">Guardar Categoria</button>
+                </div>
+              </form>
+            </div>
+          </div>
+    </div>
+</div>
+{% endblock %}
